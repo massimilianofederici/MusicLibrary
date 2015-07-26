@@ -3,12 +3,12 @@ __author__ = 'Massimiliano'
 from tags.tagreader import TagReader
 import unittest
 from mutagen import flac
-import sys
 
 
 class TagReaderTest(unittest.TestCase):
     def setUp(self):
         self.filename = './test-01.flac'
+        self.foldername = '.'
         self.expectedDocument = {}
 
     def test_document_should_not_be_null(self):
@@ -40,7 +40,39 @@ class TagReaderTest(unittest.TestCase):
 
         document = reader.readfile(self.filename)
 
-        {value: self.assertTrue(value.isupper(), 'Expecting key to be upper but was {0}'.format(value)) for value in document}
+        {value: self.assertTrue(value.isupper(), 'Expecting key to be upper but was {0}'.format(value)) for value in
+         document}
+
+    def test_document_should_contain_file_name(self):
+        reader = TagReader()
+
+        document = reader.readfile(self.filename)
+
+        self.assertTrue(document['PATH'])
+
+    def test_documents_should_not_be_null(self):
+        reader = TagReader()
+
+        documents = reader.readfolder(self.foldername)
+
+        self.assertIsNotNone(documents, 'Expecting documents not to be null')
+
+    def test_documents_should_not_be_empty(self):
+        reader = TagReader()
+
+        documents = reader.readfolder(self.foldername)
+
+        self.assertTrue(documents)
+
+    def test_should_read_files_in_folder(self):
+        reader = TagReader()
+
+        documents = reader.readfolder(self.foldername)
+
+        import glob
+        expectedCount = len(glob.glob(self.foldername + '/*.flac'))
+        self.assertIs(expectedCount, len(documents))
+        {document: self.assertTrue(document, 'Expecting document not to be empty') for document in documents}
 
     def _getTagName(self, tagname, tagvalue):
-        self.expectedDocument[tagname.upper()] = tagvalue;
+        self.expectedDocument[tagname.upper()] = tagvalue
