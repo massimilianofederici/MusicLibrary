@@ -1,0 +1,80 @@
+{
+    "editor": {
+        "fields": [
+            "ALBUM",
+            "TITLE",
+            "ARTIST",
+            "COMPOSER",
+            "DATE",
+            "TRACKNUMBER",
+            "GENRE",
+            "ORIGINAL ALBUM",
+            "PUBLISHER",
+            "CONDUCTOR",
+            "VENUE",
+            "ORCHESTRA",
+            "SOLOISTS",
+            "GROUPING",
+            "OPUS NUMBER",
+            "SCORE",
+            "DATE OF COMPOSITION",
+            "DATE OF PUBLICATION",
+            "STYLE",
+            "LANGUAGE",
+            "DEDICATION"
+        ],
+        "multi-value": "< keep >"
+    },
+    "libraries": [
+        {
+            "name": "tmp-music",
+            "path": "C:\\tmp",
+            "selected": 0
+        },
+        {
+            "name": "music1",
+            "path": "C:\\Users\\Massimiliano\\Music",
+            "selected": 1
+        },
+        {
+            "name": "music2",
+            "path": "C:\\Users\\Massimiliano\\Music",
+            "selected": 0
+        },
+        {
+            "name": "music3",
+            "path": "C:\\tmp",
+            "selected": 0
+        },
+        {
+            "name": "music4",
+            "path": "c:/tmp",
+            "selected": 0
+        },
+        {
+            "name": "music5",
+            "path": "c:/tmp",
+            "selected": 0
+        },
+        {
+            "name": "music11",
+            "path": "C:\\Users\\Massimiliano\\Music",
+            "selected": 0
+        },
+        {
+            "name": "all",
+            "path": "C:\\",
+            "selected": 0
+        }
+    ],
+    "tree": {
+        "views": [
+            "COMPOSER",
+            "GENRE",
+            "ALBUM",
+            "ARTIST",
+            "TITLE"
+        ]
+    },
+    "window-title": "Music Library Management"
+}

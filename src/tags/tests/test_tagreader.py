@@ -70,7 +70,7 @@ class TagReaderTest(unittest.TestCase):
         documents = reader.readfolder(self.foldername)
 
         import glob
-        expectedCount = len(glob.glob(self.foldername + '/*.flac'))
+        expectedCount = 5
         self.assertIs(expectedCount, len(documents))
         {document: self.assertTrue(document, 'Expecting document not to be empty') for document in documents}
 
