@@ -19,13 +19,20 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         command = next(iter(data.keys()))
         argument = data[command]
         result = getattr(self, command)(argument)
-        self.request.sendall(dumps(result).encode())
+        response = dumps(result).encode()
+        self.request.sendall(response)
 
     def choose_library(self, library_name):
         self.server.library = Library(library_name).restore()
         command = {'query': {},
                    'view': 'COMPOSER'}
         return self.view_library(command)
+
+    def get_selection(self, query_param):
+        query = query_param['query']
+        tracks = self.server.library.find_tracks(query)
+        print("found {} tracks".format(len(tracks)))
+        return [{'path': track['PATH']} for track in tracks]
 
     def view_library(self, query_param):
         query = query_param['query']
